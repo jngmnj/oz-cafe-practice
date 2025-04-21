@@ -3,7 +3,7 @@ import { useMenu } from "../context/menuContext";
 import Item from "./Item";
 import OrderModal from "./OrderModal";
 
-function Menu({ cart, setCart }) {
+function Menu() {
   const { menu } = useMenu();
   const [modalOn, setModalOn] = useState(false);
   const [modalMenu, setModalMenu] = useState(null);
@@ -40,8 +40,6 @@ function Menu({ cart, setCart }) {
         <OrderModal
           modalMenu={modalMenu}
           setModalOn={setModalOn}
-          cart={cart}
-          setCart={setCart}
         />
       ) : null}
     </>

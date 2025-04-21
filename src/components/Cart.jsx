@@ -1,7 +1,9 @@
 import data from "../assets/data";
+import { useCart } from "../context/cartContext";
 import { useMenu } from "../context/menuContext";
 
-function Cart({ cart, setCart }) {
+function Cart() {
+  const { cart } = useCart();
   const { menu } = useMenu();
   if (!menu)
     return (
@@ -21,8 +23,6 @@ function Cart({ cart, setCart }) {
               item={allMenus.find((menu) => menu.id === el.id)}
               options={el.options}
               quantity={el.quantity}
-              cart={cart}
-              setCart={setCart}
             />
           ))
         ) : (
@@ -33,7 +33,9 @@ function Cart({ cart, setCart }) {
   );
 }
 
-function CartItem({ item, options, quantity, cart, setCart }) {
+function CartItem({ item, options, quantity }) {
+  const { cart, setCart } = useCart();
+  
   return (
     <li className="cart-item">
       <div className="cart-item-info">
